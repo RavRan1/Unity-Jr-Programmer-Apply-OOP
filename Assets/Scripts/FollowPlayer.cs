@@ -19,20 +19,15 @@ public class FollowPlayer : MonoBehaviour
     {
 		if (player == null)
 		{
-			Vehicle[] vehicles = FindObjectsOfType<Vehicle>();
-		
-			for (int i = 0; i < vehicles.Length; i ++)
-			{
-				if (vehicles[i].manualControl)
-				{
-					player = vehicles[i].gameObject;
-				}
-			}
+			Truck[] trucks = FindObjectsOfType<Truck>();
 			
-			if (player == null)
+			if (trucks.Length == 0)
 			{
-				Debug.LogWarning("The player cannot be found in the scene!");
+				Debug.LogWarning("The transporting vehicle cannot be found in the scene!");
 				return;
+			} else
+			{
+				player = trucks[0].gameObject;
 			}
 		}
 		

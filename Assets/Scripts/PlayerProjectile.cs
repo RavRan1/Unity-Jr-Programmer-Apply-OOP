@@ -32,7 +32,7 @@ public class PlayerProjectile : MonoBehaviour
 	{
 		if (other.CompareTag("Enemy"))
 		{
-			other.transform.parent.gameObject.SetActive(false);
+			Destroy(other.transform.parent.gameObject);
 			Destroy(gameObject);
 		}
 	}

@@ -19,15 +19,12 @@ public class FollowPlayer : MonoBehaviour
     {
 		if (player == null)
 		{
-			Truck[] trucks = FindObjectsOfType<Truck>();
+			player = GameObject.FindWithTag("Player");
 			
-			if (trucks.Length == 0)
+			if (player == null)
 			{
 				Debug.LogWarning("The transporting vehicle cannot be found in the scene!");
 				return;
-			} else
-			{
-				player = trucks[0].gameObject;
 			}
 		}
 		

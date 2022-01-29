@@ -9,10 +9,10 @@ public class HeavyGuard : Vehicle
     // Start is called before the first frame update
     void Start() // POLYMORPHISM
     {
-        horsePower = 1800.0f;
+        horsePower = 1600.0f;
 		turnSpeed = 45.0f;
-		health = 1600;
-		maxHealth = 1600;
+		health = 300;
+		maxHealth = 300;
 		fireDelay = 0.2f;
 		vehicleRb = GetComponent<Rigidbody>();
 		
@@ -33,6 +33,9 @@ public class HeavyGuard : Vehicle
 			if (transform.position.z < (truck.transform.position.z - zDiff))
 			{
 				vehicleRb.AddForce(Vector3.forward * horsePower);
+			} else
+			{
+				vehicleRb.AddForce(Vector3.back * horsePower);
 			}
 		}
 		

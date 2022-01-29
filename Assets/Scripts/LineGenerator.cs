@@ -5,9 +5,10 @@ using UnityEngine;
 public class LineGenerator : MonoBehaviour
 {
 	[SerializeField] private GameObject linePrefab;
-	private Vector3 firstPosition = new Vector3(3, -3, 40); // ENCAPSULATION
-	private float posInterval = 40;                         // ENCAPSULATION
-	private float maxZ = 4960;                              // ENCAPSULATION
+	[SerializeField] private Vector3 firstPosition = new Vector3(3, -3, 40);
+	[SerializeField] private Vector3 posInterval = new Vector3(0, 0, 0);
+	[SerializeField] private bool alternateX = false;
+	private float maxZ = 4960; // ENCAPSULATION
 	
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,12 @@ public class LineGenerator : MonoBehaviour
 			{
 				GameObject line = Instantiate(linePrefab, linePos, linePrefab.transform.rotation);
 				line.transform.parent = transform;
-				linePos = new Vector3(linePos.x, linePos.y, linePos.z + posInterval);
+				linePos = linePos + posInterval;
+				
+				if (alternateX)
+				{
+					linePos.x *= -1;
+				}
 			}
 		}
     }
